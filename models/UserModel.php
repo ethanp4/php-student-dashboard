@@ -7,12 +7,12 @@ class UserModel {
     $this -> conn = $conn;
   }
 
-  public function register($email, $password) {
+  public function register($email, $password, $username) {
     //insert the new user into the db
-    $query = "INSERT INTO user (email, password) VALUES (?, ?)";
+    $query = "INSERT INTO user (email, password, username) VALUES (?, ?, ?)";
     $stmt = $this -> conn -> prepare($query);
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
-    $stmt -> bind_param("ss", $email, $password_hash);
+    $stmt -> bind_param("sss", $email, $password_hash, $username);
     try {
       $stmt -> execute();
     } catch (Exception $e) {

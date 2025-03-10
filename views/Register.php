@@ -9,6 +9,8 @@
   <h3>Register</h3>
   <a href="login">Login here</a>
   <form method="POST">
+    <label for="username">Username:</label>
+    <input id = "username" placeholder="Enter your username" type="text" name="username" required><br>
     <label for="email">Email:</label>
     <input id = "email" placeholder="Enter your email" type="text" name="email" required><br>
     <label for="password">Password:</label>

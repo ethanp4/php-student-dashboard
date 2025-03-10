@@ -15,8 +15,9 @@ class AuthController {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $email = $_POST['email'];
       $password = $_POST['password'];
+      $username = $_POST["username"];
       
-      if ($this -> userModel -> register($email, $password)) {
+      if ($this -> userModel -> register($email, $password, $username)) {
         $_SESSION["email"] = $email;
         header(sprintf("Location: %s/dashboard", $this -> script_name));
       } else {
@@ -63,8 +64,5 @@ class AuthController {
       header(sprintf("Location: %s/login", $this -> script_name));
     }
   }
-
-
-
 }
 ?>
